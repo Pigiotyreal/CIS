@@ -46,6 +46,7 @@ while True:
         break
     elif command == "wallet":
         print(f"Money: ${money:.2f}")
+        print(f"Invested: ${btc*btc_price + eth*eth_price + doge*doge_price + ltc*ltc_price:.2f}")
         print(f"Bitcoin: {btc} BTC (${btc*btc_price:.2f})")
         print(f"Ethereum: {eth} ETH (${eth*eth_price:.2f})")
         print(f"Dogecoin: {doge} DOGE (${doge*doge_price:.2f})")
