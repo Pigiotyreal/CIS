@@ -36,9 +36,91 @@ while True:
     
     if command == "help":
         print("Commands: help, buy, sell, wallet, price, quit")
-    
     elif command == "price":
         print("Bitcoin (BTC) price: $", btc_price)
         print("Ethereum (ETH) price: $", eth_price)
         print("Dogecoin (DOGE) price: $", doge_price)
         print("Litecoin (LTC) price: $", ltc_price)
+    elif command == "quit":
+        print("Thanks for playing!")
+        break
+    elif command == "wallet":
+        print(f"Money: ${money:.2f}")
+        print(f"Bitcoin: {btc} BTC (${btc*btc_price})")
+        print(f"Ethereum: {eth} ETH (${eth*eth_price})")
+        print(f"Dogecoin: {doge} DOGE (${doge*doge_price})")
+        print(f"Litecoin: {ltc} LTC (${ltc*ltc_price})")
+    elif command.startswith("buy"):
+        command = command.split()
+        if len(command) == 3:
+            coin = command[1]
+            amount = command[2]
+            if coin == "btc":
+                if money >= btc_price * float(amount):
+                    money -= btc_price * float(amount)
+                    btc += float(amount)
+                    print(f"You bought {amount} BTC!")
+                else:
+                    print("You don't have enough money!")
+            elif coin == "eth":
+                if money >= eth_price * float(amount):
+                    money -= eth_price * float(amount)
+                    eth += float(amount)
+                    print(f"You bought {amount} ETH!")
+                else:
+                    print("You don't have enough money!")
+            elif coin == "doge":
+                if money >= doge_price * float(amount):
+                    money -= doge_price * float(amount)
+                    doge += float(amount)
+                    print(f"You bought {amount} DOGE!")
+                else:
+                    print("You don't have enough money!")
+            elif coin == "ltc":
+                if money >= ltc_price * float(amount):
+                    money -= ltc_price * float(amount)
+                    ltc += float(amount)
+                    print(f"You bought {amount} LTC!")
+                else:
+                    print("You don't have enough money!")
+            else:
+                print("Invalid coin!")
+        else:
+            print("Invalid command!")
+    elif command.startswith("sell"):
+        command = command.split()
+        if len(command) == 3:
+            coin = command[1]
+            amount = command[2]
+            if coin == "btc":
+                if btc >= float(amount):
+                    money += btc_price * float(amount)
+                    btc -= float(amount)
+                    print(f"You sold {amount} BTC!")
+                else:
+                    print("You don't have enough BTC!")
+            elif coin == "eth":
+                if eth >= float(amount):
+                    money += eth_price * float(amount)
+                    eth -= float(amount)
+                    print(f"You sold {amount} ETH!")
+                else:
+                    print("You don't have enough ETH!")
+            elif coin == "doge":
+                if doge >= float(amount):
+                    money += doge_price * float(amount)
+                    doge -= float(amount)
+                    print(f"You sold {amount} DOGE!")
+                else:
+                    print("You don't have enough DOGE!")
+            elif coin == "ltc":
+                if ltc >= float(amount):
+                    money += ltc_price * float(amount)
+                    ltc -= float(amount)
+                    print(f"You sold {amount} LTC!")
+                else:
+                    print("You don't have enough LTC!")
+            else:
+                print("Invalid coin!")
+        else:
+            print("Invalid command!")
